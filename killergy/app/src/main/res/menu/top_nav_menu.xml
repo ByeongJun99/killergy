@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/preference_btn2"
+        android:icon="@drawable/free_icon_settings_gear_icon_5383335"
+        app:showAsAction="ifRoom"
+        android:title="환경설정" />
+
+</menu>

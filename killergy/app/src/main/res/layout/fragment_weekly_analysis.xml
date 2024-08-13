@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WeeklyReport.WeeklyAnalysisFragment">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="10dp"
+        android:text="주간 칼로리 분석표"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="250dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:text="주간 성분 분석표"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView1" />
+
+    <FrameLayout
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintBottom_toTopOf="@id/cardView2">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ingredientGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="나트륨"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="탄수화물"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="당류"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지방"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="포화지방"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="트랜스지방"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="단백질"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="콜레스테롤"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="칼슘"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    app:checkedIconVisible="false"
+                    app:chipBackgroundColor="@color/selected_highlight"/>
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+    </FrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintWidth_percent="0.9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

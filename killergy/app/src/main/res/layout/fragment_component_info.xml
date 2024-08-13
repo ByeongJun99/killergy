@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/image_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="분석을 원하는 식품의 사진을 찍거나 갤러리에서 선택하세요."
+                android:textColor="@color/black"
+                />
+
+            <ImageView
+                android:id="@+id/main_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter" />
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_camera"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="bottom|right"
+                android:text="click!"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/allergyFrame"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp">
+
+                    <TextView
+                        android:id="@+id/allergyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="알레르기 유발 물질"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <FrameLayout
+                        android:id="@+id/containFrame"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/test_layout_shape"
+                        app:layout_constraintTop_toBottomOf="@id/allergyTextView"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp">
+
+                            <TextView
+                                android:id="@+id/allergyContainTitleTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="함유 물질"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/allergyContainValueTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="@id/allergyContainTitleTextView"
+                                app:layout_constraintTop_toBottomOf="@id/allergyContainTitleTextView" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/test_layout_shape"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/containFrame">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp">
+
+                            <TextView
+                                android:id="@+id/allergyFactoryTitleTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="같은 제조 시설"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/allergyFactoryValueTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="@id/allergyFactoryTitleTextView"
+                                app:layout_constraintTop_toBottomOf="@id/allergyFactoryTitleTextView" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </FrameLayout>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/resultConstraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/KcalTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:text="칼로리"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/KcalValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/KcalTextView"
+                    app:layout_constraintStart_toStartOf="@id/TextGuideline" />
+
+                <TextView
+                    android:id="@+id/KcalUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kcal"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/KcalValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/KcalEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/KcalUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/SodiumTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="나트륨"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/KcalTextView" />
+
+                <TextView
+                    android:id="@+id/SodiumValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/SodiumTextView"
+                    app:layout_constraintStart_toStartOf="@id/KcalValueTextView" />
+
+                <TextView
+                    android:id="@+id/SodiumUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mg"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/SodiumValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/SodiumEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/SodiumUnitTextView"
+                    app:layout_constraintStart_toStartOf="@+id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/CarbohydratesTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="탄수화물"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/SodiumTextView" />
+
+                <TextView
+                    android:id="@+id/CarbohydratesValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/CarbohydratesTextView"
+                    app:layout_constraintStart_toStartOf="@id/KcalValueTextView" />
+
+                <TextView
+                    android:id="@+id/CarbohydratesUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/CarbohydratesTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/CarbohydratesEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/CarbohydratesUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/SugarsTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="당류"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/CarbohydratesTextView" />
+
+                <TextView
+                    android:id="@+id/SugarsValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/SugarsTextView"
+                    app:layout_constraintStart_toStartOf="@id/CarbohydratesValueTextView" />
+
+                <TextView
+                    android:id="@+id/SugarsUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/SugarsValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/SugarsEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/SugarsValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/FatTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="지방"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/SugarsTextView" />
+
+                <TextView
+                    android:id="@+id/FatValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/FatTextView"
+                    app:layout_constraintStart_toStartOf="@id/SugarsValueTextView" />
+
+                <TextView
+                    android:id="@+id/FatUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/FatValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/FatEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/FatUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/TransFatTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="트랜스지방"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/FatTextView" />
+
+                <TextView
+                    android:id="@+id/TransFatValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/TransFatTextView"
+                    app:layout_constraintStart_toStartOf="@id/FatValueTextView" />
+
+                <TextView
+                    android:id="@+id/TransFatUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/TransFatValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/TransFatEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/TransFatUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/SaturatedFatTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="포화지방"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/TransFatTextView" />
+
+                <TextView
+                    android:id="@+id/SaturatedFatValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/SaturatedFatTextView"
+                    app:layout_constraintStart_toStartOf="@id/TransFatValueTextView" />
+
+                <TextView
+                    android:id="@+id/SaturatedFatUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/SaturatedFatValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/SaturatedFatEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/SaturatedFatUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/CholesterolTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="콜레스테롤"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/SaturatedFatTextView" />
+
+                <TextView
+                    android:id="@+id/CholesterolValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/CholesterolTextView"
+                    app:layout_constraintStart_toStartOf="@id/SaturatedFatValueTextView" />
+
+                <TextView
+                    android:id="@+id/CholesterolUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mg"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/CholesterolValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/CholesterolEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/CholesterolUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/ProteinTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="단백질"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/CholesterolTextView" />
+
+                <TextView
+                    android:id="@+id/ProteinValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ProteinTextView"
+                    app:layout_constraintStart_toStartOf="@id/CholesterolValueTextView" />
+
+                <TextView
+                    android:id="@+id/ProteinUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ProteinValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/ProteinEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/ProteinUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <TextView
+                    android:id="@+id/CalciumTextView"
+                    style="@style/Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="칼슘"
+                    app:layout_constraintStart_toStartOf="@id/KcalTextView"
+                    app:layout_constraintTop_toBottomOf="@id/ProteinTextView" />
+
+                <TextView
+                    android:id="@+id/CalciumValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/CalciumTextView"
+                    app:layout_constraintStart_toStartOf="@id/ProteinValueTextView" />
+
+                <TextView
+                    android:id="@+id/CalciumUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mg"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/CalciumValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/UnitGuideline" />
+
+                <ImageView
+                    android:id="@+id/CalciumEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="@id/CalciumUnitTextView"
+                    app:layout_constraintStart_toStartOf="@id/ButtonGuideline" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="저장"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/CalciumTextView" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/SodiumTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="SodiumTextView, SodiumValueTextView, SodiumUnitTextView, SodiumEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/CarbohydratesTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="CarbohydratesTextView, CarbohydratesValueTextView, CarbohydratesUnitTextView, CarbohydratesEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/CholesterolTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="CholesterolTextView, CholesterolValueTextView, CholesterolUnitTextView, CholesterolEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/ProteinTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="ProteinTextView, ProteinValueTextView, ProteinUnitTextView, ProteinEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/SugarsTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="SugarsTextView, SugarsValueTextView, SugarsUnitTextView, SugarsEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/KcalTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="KcalTextView, KcalValueTextView, KcalUnitTextView, KcalEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/FatTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="FatTextView, FatValueTextView, FatUnitTextView, FatEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/TransFatTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="TransFatTextView,TransFatValueTextView, TransFatUnitTextView, TransFatEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/SaturatedFatTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="SaturatedFatTextView,SaturatedFatValueTextView, SaturatedFatUnitTextView, SaturatedFatEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/CalciumTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="CalciumTextView,CalciumValueTextView, CalciumUnitTextView, CalciumEdit" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/KeywordTextGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="SodiumTextGroup, CarbohydratesTextGroup, CholesterolTextGroup, ProteinTextGroup, SugarsTextGroup, KcalTextGroup, FatTextGroup, TransFatTextGroup, SaturatedFatTextGroup, CalciumTextGroup" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/TextGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="220dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/ButtonGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="320dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/UnitGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="220dp" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/allValueGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="saveButton, KeywordTextGroup" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
